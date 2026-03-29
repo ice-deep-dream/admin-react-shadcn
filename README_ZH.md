@@ -100,7 +100,8 @@ admin-react-shadcn/
 │   └── hooks/            # 自定义 React Hooks
 ├── docs/                 # 项目文档
 │   └── template/         # 开发规范文档
-│       └── 通用开发规范.md  # 核心开发规范（必看）
+│       ├── 通用开发规范.md  # 核心开发规范（中文，必看）
+│       └── DEVELOPMENT-GUIDELINES.md  # 开发规范（英文）
 ├── public/               # 静态资源
 └── package.json          # 依赖配置
 ```
@@ -119,7 +120,7 @@ admin-react-shadcn/
   - 顶部导航布局：适合多级导航场景
   - 标签页布局：适合多标签切换场景（如仪表盘）
 - ✅ **示例组件参考**：提供用户搜索、基础组件等实战示例
-- ✅ **开发规范文档**：详细的 [通用开发规范](docs/template/通用开发规范.md)，包含：
+- ✅ **开发规范文档**：详细的 [通用开发规范](docs/template/通用开发规范.md)（中文）/ [Development Guidelines](docs/template/DEVELOPMENT-GUIDELINES.md)（英文），包含：
   - 文件结构规范
   - 开发流程（4 步快速上手）
   - 布局规范（固定 Header + Main）
@@ -143,7 +144,9 @@ admin-react-shadcn/
 
 ### 快速上手路径
 
-1. **阅读开发规范**：[docs/template/通用开发规范.md](docs/template/通用开发规范.md)
+1. **阅读开发规范**：
+   - 中文：[docs/template/通用开发规范.md](docs/template/通用开发规范.md)
+   - English: [docs/template/DEVELOPMENT-GUIDELINES.md](docs/template/DEVELOPMENT-GUIDELINES.md)
 2. **参考布局模板**：[src/features/templates/layout/](src/features/templates/layout/)
 3. **查看示例组件**：[src/features/templates/components/](src/features/templates/components/)
 4. **复制模板代码**：使用规范中的快速开始模板

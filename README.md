@@ -99,7 +99,8 @@ admin-react-shadcn/
 │   └── hooks/            # Custom React Hooks
 ├── docs/                 # Project documentation
 │   └── template/         # Development specs
-│       └── 通用开发规范.md  # Core development spec (must-read)
+│       ├── 通用开发规范.md  # Core development spec (Chinese, must-read)
+│       └── DEVELOPMENT-GUIDELINES.md  # Development spec (English)
 ├── public/               # Static assets
 └── package.json          # Dependencies
 ```
@@ -118,7 +119,7 @@ admin-react-shadcn/
   - Top Navigation Layout: For multi-level navigation scenarios
   - Tab Layout: For multi-tab switching scenarios (like dashboard)
 - ✅ **Example components reference**: User search, basic components and other practical examples
-- ✅ **Development spec documentation**: Detailed [Development Spec](docs/template/通用开发规范.md), including:
+- ✅ **Development spec documentation**: Detailed [Development Spec](docs/template/DEVELOPMENT-GUIDELINES.md) (English) / [开发规范](docs/template/通用开发规范.md) (Chinese), including:
   - File structure conventions
   - Development workflow (4-step quick start)
   - Layout conventions (fixed Header + Main)
@@ -142,7 +143,9 @@ admin-react-shadcn/
 
 ### Quick Start Path
 
-1. **Read development spec**: [docs/template/通用开发规范.md](docs/template/通用开发规范.md)
+1. **Read development spec**: 
+   - English: [docs/template/DEVELOPMENT-GUIDELINES.md](docs/template/DEVELOPMENT-GUIDELINES.md)
+   - 中文：[docs/template/通用开发规范.md](docs/template/通用开发规范.md)
 2. **Reference layout templates**: [src/features/templates/layout/](src/features/templates/layout/)
 3. **View example components**: [src/features/templates/components/](src/features/templates/components/)
 4. **Copy template code**: Use quick start templates from the spec
