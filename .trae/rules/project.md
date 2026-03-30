@@ -1,6 +1,8 @@
 # 通用开发规范
 
 > 基于现有模板系统的标准化开发规范，用于指导新功能和组件的开发
+> 
+> ⚠️ **重要说明**：本项目有自己的布局系统（主题配置、导航等），通用开发规范提供的是**开发模板和最佳实践**，允许根据实际需求灵活调整。
 # 必须参考 八、参考示例（必看）选择合适的布局或组件
 ---
 
@@ -145,6 +147,18 @@ function FeatureNameRoute() {
 
 ## 🎨 三、布局规范
 
+### 3.0 布局系统说明
+
+⚠️ **重要**：本项目有自己的布局系统，包括：
+- 主题配置（明/暗主题切换）
+- 导航系统（侧边栏、顶部导航）
+- 用户菜单和配置抽屉
+
+**通用开发规范提供的是开发模板**，允许根据实际需求灵活调整：
+- ✅ **Header 内容可以灵活配置**：仪表盘等页面可以不加按钮组，只使用 Search + 主题切换 + 用户菜单
+- ✅ **标题区域可以简化**：某些页面可以只有标题，不需要操作按钮
+- ✅ **布局模板可以定制**：根据业务需求调整布局结构
+
 ### 3.1 标准页面结构
 
 ```tsx
@@ -207,6 +221,126 @@ function FeatureNameRoute() {
 | 分隔线 | `my-4 shadow-sm` | 间距 + 阴影 |
 | 内容区域 | `faded-bottom no-scrollbar overflow-auto pb-16` | 渐变 + 隐藏滚动条 |
 | 网格布局 | `grid gap-4` | 标准网格间距 |
+
+### 3.3 布局灵活性说明
+
+⚠️ **标准页面结构是参考模板，不是强制要求**。根据实际业务需求可以调整：
+
+#### ✅ 允许的调整
+
+**1. Header 内容调整**
+```tsx
+// ✅ 标准 Header
+<Header fixed>
+  <Search />
+  <div className='ms-auto flex items-center space-x-4'>
+    <ThemeSwitch />
+    <ConfigDrawer />
+    <ProfileDropdown />
+  </div>
+</Header>
+```
+
+**2. 标签页布局（推荐）**
+```tsx
+<Main fixed>
+  {/* 标题区域 */}
+  <div className='flex items-center justify-between gap-2'>
+    <div>
+      <h1>标题</h1>
+      <p className='text-muted-foreground'>描述</p>
+    </div>
+  </div>
+
+  <Separator className='my-4 shadow-sm' />
+
+  {/* 标签页布局 - Tabs 固定，内容滚动 */}
+  <div className='faded-bottom no-scrollbar overflow-auto pb-16'>
+    <Tabs defaultValue='overview' className='flex h-full flex-col'>
+      {/* Tabs 列表 - 固定在顶部 */}
+      <div className='sticky top-0 z-10 bg-background/95 backdrop-blur'>
+        <TabsList>
+          <TabsTrigger value='tab1'>标签 1</TabsTrigger>
+          <TabsTrigger value='tab2'>标签 2</TabsTrigger>
+        </TabsList>
+        <Separator />
+      </div>
+      
+      {/* Tabs 内容区域 - 可滚动 */}
+      <div className='flex-1 overflow-auto'>
+        <div className='grid gap-4 pt-4'>
+          <TabsContent value='tab1'>内容 1</TabsContent>
+          <TabsContent value='tab2'>内容 2</TabsContent>
+        </div>
+      </div>
+    </Tabs>
+  </div>
+</Main>
+```
+
+**3. 标题区域调整**
+```tsx
+// ✅ 简化版 - 只有标题和描述（如仪表盘）
+<div className='flex items-center justify-between gap-2'>
+  <div>
+    <div className='flex items-center gap-2'>
+      <h1 className='text-2xl font-bold tracking-tight'>
+        {t('common.dashboard')}
+      </h1>
+      <Badge variant='secondary'>Dashboard</Badge>
+    </div>
+    <p className='text-muted-foreground'>
+      {t('common.dashboardDescription')}
+    </p>
+  </div>
+  {/* 可以没有右侧按钮组 */}
+</div>
+
+// ✅ 完整版 - 带操作按钮（如列表页）
+<div className='flex items-center justify-between gap-2'>
+  <div>
+    <div className='flex items-center gap-2'>
+      <h1>标题</h1>
+      <Badge>列表</Badge>
+    </div>
+    <p className='text-muted-foreground'>描述</p>
+  </div>
+  <div className='flex gap-2'>
+    <Button variant='outline'>导入</Button>
+    <Button>创建</Button>
+  </div>
+</div>
+```
+
+**3. 内容区域调整**
+```tsx
+// ✅ 标签页布局（推荐）- Tabs 固定，内容滚动
+<div className='faded-bottom no-scrollbar overflow-auto pb-16'>
+  <Tabs defaultValue='overview' className='flex h-full flex-col'>
+    <div className='sticky top-0 z-10 bg-background/95 backdrop-blur'>
+      <TabsList>...</TabsList>
+      <Separator />
+    </div>
+    <div className='flex-1 overflow-auto'>
+      <div className='grid gap-4 pt-4'>
+        <TabsContent>...</TabsContent>
+      </div>
+    </div>
+  </Tabs>
+</div>
+
+// ✅ 简单内容页面
+<div className='faded-bottom no-scrollbar overflow-auto pb-16'>
+  <Card>...</Card>
+</div>
+```
+
+#### ❌ 不建议修改的部分
+
+- `Header` 和 `Main` 组件的 `fixed` 属性（保持固定布局）
+- 标题样式 `text-2xl font-bold tracking-tight`（保持视觉一致性）
+- Badge 的使用（增强可读性）
+- 内容区域的滚动处理（`overflow-auto pb-16`）
 
 ---
 
